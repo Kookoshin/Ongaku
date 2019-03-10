@@ -124,9 +124,10 @@ var currentlyPlayingAudio = new Audio(); //global variabel for å kunne sette mu
 function playAudio(filePath) {
     currentlyPlayingAudio = new Audio(filePath);
     currentlyPlayingAudio.play();
-    if(echoAudio===true) console.log("; ++audio START");
+
+    if(echoAudio===true) console.log("♪ playing");
     endOfAudio = false;
-    audioFallback();
+    audioFallback(filePath);
 }
 
 /** Method playAudioEz() plays sound file from the folder "Resources/audio" with given filepath, once.
@@ -135,7 +136,7 @@ function playAudio(filePath) {
 function playAudioEz(file){
     currentlyPlayingAudio = new Audio("Resources/audio/"+file);
     currentlyPlayingAudio.play();
-    if(echoAudio===true) console.log("; ++audio START");
+    if(echoAudio===true) console.log("♪ playing");
     endOfAudio = false;
     audioFallback();
 }
@@ -146,17 +147,17 @@ var echoAudio = false;
 function stopAudio(){
     currentlyPlayingAudio.currentTime = 0;
     currentlyPlayingAudio.pause();
-    if(echoAudio===true) console.log("; --audio STOP");
+    if(echoAudio===true) console.log("♪ stopped");
 }
 
 /** method pauseAudio() pauses currentlyPlayingAudio without resetting time. */
 function pauseAudio(){
     if(isAudioPlaying()===true){
         currentlyPlayingAudio.pause();
-        if(echoAudio===true) console.log("; -+audio paused");
+        if(echoAudio===true) console.log("♪ paused");
     }else if(isAudioPlaying()===false){
         currentlyPlayingAudio.play();
-        if(echoAudio===true) console.log("; -+audio unpaused")
+        if(echoAudio===true) console.log("♪ unpaused")
     }
 }
 
@@ -176,9 +177,10 @@ function audioFallback(){
 /** variable endOfAudio is set to true when currentlyPlayingAudio ends, and endOfAudioFunction is also triggered, to be used where needed. */
 var endOfAudio = false;
 currentlyPlayingAudio.onended = function(){
-    console.log("; End of audio reached.");
+    console.log("♪ ended.");
     endOfAudio = true;
     audioEnded(currentlyPlayingAudio);
+    currentlyPlayingAudio="";
 };
 
 /** method fastForward adds (seconds) amount of seconds to currentlyPlayingAudio's current time.
