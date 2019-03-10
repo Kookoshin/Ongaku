@@ -287,12 +287,34 @@ const minNumb = {
 
 
 //_______________________________________ knick knacks ____________________________
-/*
-function stringContainsItemFromArray(string, array){
-    for (let i = 0; i<array.length; i++){
-        if(string.contains)
+
+
+/**
+ * coolDown disables given element for given amount of time, running functions "coolDownStart" at start and "coolDownEnd" at end, which I can use where I need.
+ * @param elementId
+ * @param seconds
+ */
+function coolDown(elementId, seconds){
+    coolDownStart(elementId);
+    document.getElementById(elementId).disabled = true;
+    setTimeout(function(){
+        document.getElementById(elementId).disabled = false;
+        coolDownEnd(elementId);
+        }, seconds*1000);
+}
+var isCoolDown = false;
+function coolDownStart(elementId){
+    isCoolDown = true;
+    document.getElementById(elementId).classList.add("disabled");
+} function coolDownEnd(elementId){
+    isCoolDown = false;
+    document.getElementById(elementId).classList.remove("disabled");
+}
+
+
+function removeQuotes(string){
+    for (let i=0; i<string.length; i++){
+        string[i] = string[i].replace("\"", "");
     }
-}*/
-
-
-
+    return string;
+} //jeg gjør om mange relativt enkle koder og styles til funksjoner og classes, for å gjøre koden mer readable, som er veldig viktig.

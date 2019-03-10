@@ -97,7 +97,7 @@
         value.addEventListener("mouseover", function(){ playSong(value.id); /*console.log("++mouseover");*/} );
         value.addEventListener("mouseout", function(){ stopSong(); /*console.log("--mouseout");*/} );
         value.addEventListener("click", function(){ clicked(value.id) });
-        value.addEventListener("ondblclick", function(){ doubleClicked(value.id) });
+        //value.addEventListener("ondblclick", function(){ doubleClicked(value.id) });
         //legger funksjonene i en "function(){<funksjonen min>}" wrapper for å ikke triggere den når siden lastes, med parameter.
     }
 
@@ -133,7 +133,7 @@
     var previousFocusEl = document.createElement("meta"); //dummy element, previousFocusEl cannot be undefined
 
     function clicked(songName) {
-        console.log(""); console.log("___CLICKED___"); console.log(": inFocus="+inFocus+"  previousFocusEl="+previousFocusEl);
+        console.log(""); console.log("___CLICKED___"); //console.log(": inFocus="+inFocus+"  previousFocusEl="+previousFocusEl);
         let albumImgEl = document.getElementById(songName); //ID'en er songName
 
         if ( albumImgEl !== previousFocusEl ) {
@@ -227,10 +227,19 @@
         "Mariya Takeuchi - Plastic Love",
         "Junko Yagami - Tasogare no Bay City (Twilight's Bay City)"
     ];
-    function generateSong(){ return newSong = songs[Math.floor(Math.random()*9+1)]; }
-    var newSong;
-    var prevSongs = ["", "", ""];
+    var newSong = "";
+    var prevSongs = ["","","","","","","",""];
     var isShuffle = false;
+
+    function generateSong(){ return songs[Math.floor(Math.random()*9)]; }
+
+    function storePrevSongs(newSong){       //stores previous & current songs, to prevent playing the same song again in a short amount of time.
+        prevSongs[0] = newSong;
+        for(let i=prevSongs.length-1; i>0; i--){
+            prevSongs[i]=prevSongs[i-1];
+        } console.log("[prevSongs] = "+prevSongs)
+    }
+
 
     function startShuffle(){
         if(isShuffle===false){
@@ -239,10 +248,8 @@
             console.log(newSong);
             if(isAudioPlaying()===false){
                 inFocus = true;
+                storePrevSongs(newSong);
                 clicked(newSong);
-                prevSongs[2] = prevSongs[1];
-                prevSongs[1] = prevSongs[0];
-                prevSongs[0] = newSong;
             }
             document.getElementById("skipButton").classList.remove("vanish");
             document.getElementById("shuffleButton").innerHTML="disable shuffle play";
@@ -263,22 +270,29 @@
         }
     }
 
-    echoAudio = true; //deleteme
+    //echoAudio = true; //deleteme
+
     function shuffleNewSong(){
+
+        storePrevSongs(newSong);
+
         if(isShuffle===true){
-//            console.log(" before: newSong="+newSong+"_prevSong"+prevSong+"_prevPrevSong="+prevPrevSong);
-            prevSongs[2] = prevSongs[1];
-            prevSongs[1] = prevSongs[0];
-            prevSongs[0] = newSong;
-            while(prevSongs.includes(newSong)){
+            newSong = generateSong();
+            console.log(prevSongs.includes(newSong));
+            while(prevSongs.includes(newSong)===true){
                 newSong = generateSong();
-                console.log("generating new song")
             }
-  //          console.log(" after: newSong="+newSong+"_prevSong"+prevSong+"_prevPrevSong="+prevPrevSong);
+
+
             inFocus = true;
+
             clicked(newSong);
+
+            console.log(": "+prevSongs[0]+"   ->   "+newSong);
+
             if(isFullscreen){ fullscreen(prevSongs[0]); fullscreen(newSong); }
         }
+        //coolDown("skipButton", 0.7);
     }
 
 </script>

@@ -340,9 +340,11 @@ marquee {
 .primaryVariant>p, .primaryVariant>h1, .primaryVariant>h2, .primaryVariant>h3, .primaryVariant>h4, .primaryVariant>h5{ color: var(--onprimary) !important; }
 .secondary>p, .secondary>h1, .secondary>h2, .secondary>h3, .secondary>h4, .secondary>h5{ color: var(--onSecondary) !important; }
 .secondaryVariant>p, .secondaryVariant>h1, .secondaryVariant>h2, .secondaryVariant>h3, .secondaryVariant>h4, .secondaryVariant>h5{ color: var(--onSecondary) !important; }
+/* __________ < end > __________ */
 
-
-
+.disabled {
+    color: darkgrey !important;
+}
 
 
 
@@ -478,7 +480,7 @@ marquee {
     text-shadow: rgba(255, 255, 255, .75) .8px .8px; /* legger til en litt opaque hvit skygge bak teksten for å øke lesbarhet. */ /*TODO - forandre til svart & apply til annen tekst */
 }
 
-/* Moves "centerOfGP_grandchild" (with a parent "centerOfGP_parent") to the absolute center of "centerOfGP_grandparent"F */
+/* Moves "centerOfGP_grandchild" (with a parent "centerOfGP_parent") to the absolute center of "centerOfGP_grandparent" */
 .centerOfGP_grandparent {
     position: relative;
     align-items: center;
@@ -493,7 +495,7 @@ marquee {
     top: 34%;
     transition: all 0.5s;
 }
-/*  < end >  */
+/*   /   */
 
 
 
