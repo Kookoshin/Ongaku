@@ -114,7 +114,7 @@
     function playSong(imgId){
         if (inFocus===false){       //won't play music if focus is enabled
             stopAudio();
-            playAudioEz(imgId + ".mp3");
+            playAudioEz(imgId + ".ogg");
             currentSong = imgId;
 
             songInfoEl.innerHTML = imgId;
@@ -147,7 +147,7 @@
 
             if (inFocus === true){
                 stopAudio();
-                playAudioEz(songName + ".mp3");
+                playAudioEz(songName + ".ogg");
                 currentSong = songName;
                 console.log("♪ Now Playing "+songName);
             }
