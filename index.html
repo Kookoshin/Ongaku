@@ -62,10 +62,6 @@
     <div class="space"></div>
 
 
-    <!-- lag dropdown meny som automatisk legger til et nytt <select> med value = #id of <img> in #imgDiv -->
-
-
-
 
 
 
@@ -74,13 +70,6 @@
 <br>
 </div>
 <script>
-    // TODO - Lag toggle mellom "bigscreen mode" & "normal mode". På Bigscreen mode: når et album trykkes på så fyller albumet det hele div'en, og floating audio controls pop up, eller som ene ikoner
-    // TODO CANDO - Lag en slik 3x3 square for hver artist, hvor man kan trykke på artisten sitt bilde & navn (over each others) & den vises, som en dropdown, eller bare som bytter ut. (showonhover)
-    // TODO - make moduile out of dis
-    // TODO - flytt adddeventlisteners greia til superb.js, med justerbar function & trigger if possible
-
-    // TODO IMPORTANT: GJØR OM ID'ENE TIL KUN SANGNAVN, OG LAG OBJEKTER FOR HVER ARTIST MED ARTISTNAVN OG SANGNAVN (EVT GJØR OM ID TIL KUN ARTISTNAVN, ELLER ET NUMMER & BRUK ET ARRAY MED OBJEKTER FOR Å SETTE INN RIKTIG BILDE OG SPILLE RIKTIG SANG VED Å REFERE TIL ARRAYEN
-
 
     if(isChrome===true){
         document.getElementById("chromeWarningDiv").classList.remove("vanish");
@@ -131,7 +120,7 @@
 
     /* __________ < CLICKING AN ALBUM > __________ */
     var inFocus = false;
-    var previousFocusEl = document.createElement("meta"); //cannot be undefined
+    var previousFocusEl = document.createElement("meta"); //dummy element, previousFocusEl cannot be undefined
 
     function clicked(songName) {
         console.log(""); console.log("___CLICKED___"); console.log(": inFocus="+inFocus+"  previousFocusEl="+previousFocusEl);
