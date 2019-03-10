@@ -205,7 +205,7 @@ function currentTime(){
 
 function loadAudio(file){
     var audio = new Audio("Resources/audio/"+file+".mp3");
-    audio.addEventListener('canplaythrough', isAppLoaded, false);
+    audio.addEventListener('canplaythrough', currentTime, false);
 }
 var filesToPreload =
     [   "Haruomi Hosono - Sports Men",
