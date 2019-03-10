@@ -263,6 +263,7 @@ marquee {
 
 .minMargin { margin: 2px !important;}
 .noMargin { margin: 0 !important;}
+.noSideMargin {margin-left: 0 !important; margin-right: 0 !important;}
 .noMarginChildren *{ margin: 0 !important;}
 .minMarginChildren *{ margin: 2px !important;}
 .noPadding { padding: 0 !important;}
@@ -381,12 +382,15 @@ marquee {
 }
 
 .minimalistButton{
-    background-color: transparent;
     color: var(--onSecondary);
+    background-color: transparent;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: var(--borderRadius);
     font-weight: bold;
-    margin: 5px; padding: 10px 15px;
-    border-style: none;
-    transition-duration: .5s;
+    text-transform: uppercase;
+    margin: 5px; padding: 15px 30px !important;
+    transition-duration: .3s;
 }.minimalistButton:hover{
      color: var(--onPrimary);
  }
