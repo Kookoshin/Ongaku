@@ -203,7 +203,7 @@ function currentTime(){
     return minutes+"m"+seconds+"s"; //alt: return array with [minutes, seconds];
 }
 
-function loadAudio(file){
+/*function loadAudio(file){
     var audio = new Audio("Resources/audio/"+file+".mp3");
     audio.addEventListener('canplaythrough', currentTime, false);
 }
@@ -220,7 +220,7 @@ var filesToPreload =
     ];
 for(let i=0; i<filesToPreload.length; i++){
     loadAudio(filesToPreload[i]);
-}
+}*/
 
 
 //_____________________________________________ GRAFMAKER _________________________________________
