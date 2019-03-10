@@ -64,8 +64,7 @@ body {
     overflow: auto;
 
 
-    cursor: url("Resources/etc/cursors/Numix_Cursors/NumixLight/Arrow.cur"), pointer;
-
+    cursor: url("Resources/etc/cursors/Numix_Cursors/NumixLight/Arrow.cur"), auto;
 }
 
 * {
@@ -116,7 +115,7 @@ div {
 
 div p, div h1, div h2, div h3, div h4, div h5 {
     color: var(--onPrimary);
-    cursor: cursor; /*url("Resources/etc/cursors/Mario_Gant/Text\ Select.cur"), text*/
+    cursor: cursor; /*url("Resources/etc/cursors/Mario_Gant/Text_Select.cur"), text*/
 }
 .plainDiv>p, .plainDiv>h1, .plainDiv>h2, .plainDiv>h3, .plainDiv>h4, .plainDiv>h5 {
     color: var(--onBackground) !important;
@@ -181,7 +180,7 @@ button {
 }
 
 button, select{
-    cursor: url("Resources/etc/cursors/Mario_Gant/Normal_Select.cur"), pointer !important;
+    cursor: url("Resources/etc/cursors/Mario_Gant/Normal_Select.cur"), hand !important;
 }
 
 input, textArea{
@@ -307,11 +306,11 @@ marquee {
 
 
 /* __________ < CURSORS > __________ */
-.cursor_fancy { cursor: url("Resources/etc/cursors/Numix_Cursors/NumixLight/Arrow.cur"), pointer !important; }
-.cursor_rubbishBionicle { cursor: url("Resources/etc/cursors/Bionicle/Normal\ Select.cur"), pointer !important; }
-.cursor_mario { cursor: url("Resources/etc/cursors/Mario_Gant/Normal\ Select.cur"), pointer !important; }
-.cursor_music { cursor: url("Resources/etc/cursors/0etc/music bigboi.cur"), pointer !important; }
-.cursor_music_children * { cursor: url("Resources/etc/cursors/0etc/music bigboi.cur"), pointer !important; }
+.cursor_fancy { cursor: url("Resources/etc/cursors/Numix_Cursors/NumixLight/Arrow.cur"), auto !important; }
+.cursor_rubbishBionicle { cursor: url("Resources/etc/cursors/Bionicle/Normal\ Select.cur"), auto!important; }
+.cursor_mario { cursor: url("Resources/etc/cursors/Mario_Gant/Normal\ Select.cur"), auto !important; }
+.cursor_music { cursor: url("Resources/etc/cursors/0etc/music bigboi.cur"), auto !important; }
+.cursor_music_children * { cursor: url("Resources/etc/cursors/0etc/music bigboi.cur"), auto !important; }
 .cursor_precision {  }
 .cursor_hand { cursor: url("Resources/etc/cursors/Mario_Gant/Normal Select.cur"), hand !important; }
 
