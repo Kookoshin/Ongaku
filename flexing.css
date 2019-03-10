@@ -306,13 +306,13 @@ marquee {
 
 
 /* __________ < CURSORS > __________ */
-.cursor_fancy { cursor: url("Resources/etc/cursors/Numix_Cursors/NumixLight/Arrow.cur"), auto !important; }
-.cursor_rubbishBionicle { cursor: url("Resources/etc/cursors/Bionicle/Normal\ Select.cur"), auto!important; }
-.cursor_mario { cursor: url("Resources/etc/cursors/Mario_Gant/Normal\ Select.cur"), auto !important; }
-.cursor_music { cursor: url("Resources/etc/cursors/0etc/music bigboi.cur"), auto !important; }
-.cursor_music_children * { cursor: url("Resources/etc/cursors/0etc/music bigboi.cur"), auto !important; }
+.cursor_fancy { cursor: url("Resources/etc/cursors/Numix_Cursors/NumixLight/Arrow.cur"), auto; }
+.cursor_rubbishBionicle { cursor: url("Resources/etc/cursors/Bionicle/Normal\ Select.cur"), auto; }
+.cursor_mario { cursor: url("Resources/etc/cursors/Mario_Gant/Normal\ Select.cur"), auto; }
+.cursor_music { cursor: url("Resources/etc/cursors/0etc/music bigboi.cur"), auto; }
+.cursor_music_children * { cursor: url("Resources/etc/cursors/0etc/music bigboi.cur"), auto; }
 .cursor_precision {  }
-.cursor_hand { cursor: url("Resources/etc/cursors/Mario_Gant/Normal Select.cur"), hand !important; }
+.cursor_hand { cursor: url("Resources/etc/cursors/Mario_Gant/Normal Select.cur"), hand; }
 
 /* __________ < COLOURS > __________ */
 .primary { background-color: var(--primary) !important; color: var(--onPrimary)}
