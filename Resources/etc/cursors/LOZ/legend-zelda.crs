@@ -1,0 +1,27 @@
+﻿[NWPen]
+Path=Handwriting.cur
+
+[Arrow]
+Path=Normal Select.ani
+
+[Wait]
+Path=Busy.ani
+
+[Help]
+Path=Help Select.ani
+
+[AppStarting]
+Path=Working in Background.ani
+
+[Crosshair]
+Path=Precision Select.cur
+
+[No]
+Path=Unavailable.ani
+
+[Hand]
+Path=Link Select.ani
+
+[IBeam]
+Path=Text Select.cur
+

@@ -1,0 +1,45 @@
+﻿[Arrow]
+Path=TNZS - Normal Select.ani
+
+[Help]
+Path=TNZS - Help Select.ani
+
+[AppStarting]
+Path=TNZS - Working in Background.ani
+
+[Wait]
+Path=TNZS - Busy.ani
+
+[Crosshair]
+Path=TNZS - Precision Select.ani
+
+[IBeam]
+Path=TNZS - Text Select.ani
+
+[NWPen]
+Path=TNZS - Handwriting.ani
+
+[No]
+Path=TNZS - Unavailable.ani
+
+[SizeNS]
+Path=TNZS - Vertical Resize.ani
+
+[SizeWE]
+Path=TNZS - Horizontal Resize.ani
+
+[SizeNWSE]
+Path=TNZS - Diagonal Resize 1.ani
+
+[SizeNESW]
+Path=TNZS - Diagonal Resize 2.ani
+
+[SizeAll]
+Path=TNZS - Move.ani
+
+[UpArrow]
+Path=TNZS - Alternate Select.ani
+
+[Hand]
+Path=TNZS - Link Select.ani
+

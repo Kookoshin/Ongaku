@@ -1,0 +1,45 @@
+﻿[Arrow]
+Path=Mutant Mudds - Normal Select.ani
+
+[Help]
+Path=Mutant Mudds - Help Select.ani
+
+[AppStarting]
+Path=Mutant Mudds - Working in Background.ani
+
+[Wait]
+Path=Mutant Mudds - Busy.ani
+
+[Crosshair]
+Path=Mutant Mudds - Precision Select.ani
+
+[IBeam]
+Path=Mutant Mudds - Text Select.ani
+
+[NWPen]
+Path=Mutant Mudds - Handwriting.ani
+
+[No]
+Path=Mutant Mudds - Unavailable.ani
+
+[SizeWE]
+Path=Mutant Mudds - Horizontal Resize.ani
+
+[SizeNS]
+Path=Mutant Mudds - Vertical Resize.ani
+
+[SizeNWSE]
+Path=Mutant Mudds - Diagonal Resize 1.ani
+
+[SizeNESW]
+Path=Mutant Mudds - Diagonal Resize 2.ani
+
+[SizeAll]
+Path=Mutant Mudds - Move.ani
+
+[UpArrow]
+Path=Mutant Mudds - Alternate Select.ani
+
+[Hand]
+Path=Mutant Mudds - Link Select.ani
+

@@ -1,0 +1,1 @@
+rename "*.ex_" *.exe
