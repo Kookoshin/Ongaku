@@ -124,7 +124,7 @@ var currentlyPlayingAudio = new Audio(); //global variabel for å kunne sette mu
 function playAudio(filePath) {
     currentlyPlayingAudio = new Audio(filePath);
     currentlyPlayingAudio.play();
-    if(echoAudio===true) console.log("++audio start");
+    if(echoAudio===true) console.log("; ++audio START");
     endOfAudio = false;
     audioFallback();
 }
@@ -135,7 +135,7 @@ function playAudio(filePath) {
 function playAudioEz(file){
     currentlyPlayingAudio = new Audio("Resources/audio/"+file);
     currentlyPlayingAudio.play();
-    if(echoAudio===true) console.log("++audio START");
+    if(echoAudio===true) console.log("; ++audio START");
     endOfAudio = false;
     audioFallback();
 }
@@ -151,8 +151,13 @@ function stopAudio(){
 
 /** method pauseAudio() pauses currentlyPlayingAudio without resetting time. */
 function pauseAudio(){
-    currentlyPlayingAudio.pause();
-    if(echoAudio===true) console.log("; -+audio paused");
+    if(isAudioPlaying()===true){
+        currentlyPlayingAudio.pause();
+        if(echoAudio===true) console.log("; -+audio paused");
+    }else if(isAudioPlaying()===false){
+        currentlyPlayingAudio.play();
+        if(echoAudio===true) console.log("; -+audio unpaused")
+    }
 }
 
 /** Method isAudioPlaying() returns "true" if currentlyPlayingAudio is not paused, false if it is. */
@@ -272,7 +277,7 @@ const minNumb = {
         array.splice(array.indexOf(min), 1);
         return numbers;
     }
-} 
+} ;
 // f.eks. /** Overfører minste tall til et nytt array og fjerner det fra det gamle
 // smallestNumbers.push(minNumb.index(numbersArray2))
 // minNumb.delete(numbersArray2)
@@ -281,9 +286,13 @@ const minNumb = {
 
 
 
-//_______________________________________ knick & knacks ____________________________
-
-
+//_______________________________________ knick knacks ____________________________
+/*
+function stringContainsItemFromArray(string, array){
+    for (let i = 0; i<array.length; i++){
+        if(string.contains)
+    }
+}*/
 
 
 

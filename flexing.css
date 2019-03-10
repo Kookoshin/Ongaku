@@ -189,8 +189,8 @@ button {
     font-size: 14px;
     font-weight: 200;
     border-radius: var(--borderRadius) /*25px*/ !important;
-    padding-top: 7px !important; padding-bottom: 7px !important; /* "!important" fordi "input, select, button, textarea" vil override uten */
-    padding-left: 15px !important; padding-right: 15px !important;
+    padding: 7px 15px; /* "!important" fordi "input, select, button, textarea" vil override uten */
+
 }
 
 button, select{
@@ -260,6 +260,7 @@ marquee {
 .newline{ margin: 0px !important; padding: 0px !important; display: relative; width: 95%; height: 0; background-color: transparent !important; border-style: none; !important; box-shadow: none !important; }   /* <br> fungerer ikke med FLEX, dette er et alternativ. */
 .space{ margin: 0px !important; padding: 0px !important; display: relative; width: 95%; height: 25px; background-color: transparent !important; border-style: none; !important; box-shadow: none !important; }
 
+.noHover{ pointer-events: none; }
 
 .minMargin { margin: 2px !important;}
 .noMargin { margin: 0 !important;}
@@ -389,7 +390,7 @@ marquee {
     border-radius: var(--borderRadius);
     font-weight: bold;
     text-transform: uppercase;
-    margin: 5px; padding: 15px 30px !important;
+    margin: 5px; padding: 15px 30px;
     transition-duration: .3s;
 }.minimalistButton:hover{
      color: var(--onPrimary);
@@ -415,7 +416,7 @@ marquee {
       color: var(--onPrimary);
       border-color: transparent /* alt: var(--primaryVariant) */
 }
-.fancyButtonOnPrimary {
+.fancyButtonBackground {
     color: var(--onPrimary);
     /*background-color: var(--background);*/
     background: transparent;
@@ -428,11 +429,29 @@ marquee {
 
     margin: 5px;
     padding: 15px 30px !important;
-}  .fancyButtonOnPrimary:hover {
+}  .fancyButtonBackground:hover {
     background-color: var(--background);
     border-color: transparent;
     color: var(--onBackground);
 }
+.fancyButtonSecondary {
+    color: var(--onSecondary);
+    /*background-color: var(--background);*/
+    background: transparent;
+    border: 2px solid var(--secondaryVariant);
+    border-radius: var(--borderRadius);
+
+    text-transform: uppercase;
+    font-weight: bold;
+    transition-duration: .5s;
+
+    margin: 5px;
+    padding: 15px 30px !important;
+}  .fancyButtonSecondary:hover {
+       background-color: var(--secondaryVariant);
+       border-color: transparent;
+       color: var(--onBackground);
+   }
 
 .thiccButton {
     color: var(--surface);

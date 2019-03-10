@@ -14,12 +14,12 @@
     </style>
 </head>
 <body>
-     <header>
-        <div class="plainDiv">
-            <div class="secondaryVariant justifyCenter minMarginChildren" style="width:400px; margin: 0;"> <h1> 音楽 </h1></div>
-        </div>
-    </header>
-     <div class="plainDiv noMargin noPadding alignCenter justifyCenter column">
+<header>
+    <div class="plainDiv">
+        <div class="secondaryVariant justifyCenter minMarginChildren" style="width:400px; margin: 0;"> <h1> 音楽 </h1></div>
+    </div>
+</header>
+<div class="plainDiv noMargin noPadding alignCenter justifyCenter column">
 
 
     <div id="chromeWarningDiv" class="error vanish" style="width: 500px">
@@ -29,13 +29,13 @@
     <div class="space"></div>
 
     <div class="secondary">
-    <h3 class="textAlignCenter noMargin">〠 Hover over an album to listen to it, click it to enable permanent player, press F to zoom. 〠</h3>
+    <h3 class="textAlignCenter noMargin">〠 Hover over an album to listen to it, click it to enable permanent player, press F to enter fullscreen. 〠</h3>
     </div>
 
     <div class="space"></div>
 
 
-<marquee behavior="scroll" direction="left"  class="bold invisible noMargin blackOutline" style="position:initial; color: white; width: 600px; display:relative; font-size: 24px;" id="songInfo">  you shouldn't be seeing this  </marquee>
+    <marquee behavior="scroll" direction="left"  class="bold invisible noMargin blackOutline" style="position:initial; color: white; width: 600px; display:relative; font-size: 24px;" id="songInfo">  you shouldn't be seeing this  </marquee>
 
     <div id="imgDiv" class="column noShadowChildren inline cursor_music centerOfGP_grandparent pop">
         <div class="row plainDiv minMarginChildren noMargin noPadding">
@@ -58,10 +58,18 @@
     <div class="space"></div>
 
          <div class="row noPadding secondary">
+             <button class="minimalistButton noSideMargin" onclick="pauseAudio()">pause audio</button>
+             <button class="minimalistButton noSideMargin noSidePadding vanish" id="skipButton" onclick="shuffleNewSong()">skip</button>
              <button class="minimalistButton noSideMargin" onclick="fastForward(30)">fast forward</button>
-         <button class="minimalistButton noSideMargin" onclick="fullscreen(currentSong)">fullscreen</button>
          </div>
+
+    <button class="fancyButton noMargin" id="shuffleButton" onclick="startShuffle()">enable shuffle play</button>
+
+    <button class="fancyButton" id="fullscreenButton" onclick="fullscreen(currentSong)">fullscreen</button>
+
+
     <div class="space"></div>
+
 
 
 <!-- todo: Make an array of objects with song & artist information, & generate 3x3 grids of albums out of a random selection of this array. -->
@@ -69,7 +77,7 @@
 
 
 
-<br>
+
 </div>
 <script>
 
@@ -150,15 +158,16 @@
                 previousFocusEl = document.querySelector("meta");     //dummy element
                 inFocus = false;
                 if(isFullscreen===true) fullscreen(songName);
+                if(isShuffle===true) shuffleNewSong();
         };
             inFocus = true;
-            console.log(": inFocus enabled");
+            console.log(": inFocus is now enabled");
 
         } else if (albumImgEl === previousFocusEl) {
             inFocus = false;
             previousFocusEl.classList.add("deCirclify"); //legger deCirclify tilbake på elementet som ble clicked forrige gang.
             previousFocusEl = document.querySelector("meta"); //dummy element
-            console.log(": inFocus disabled");
+            console.log(": inFocus is now disabled");
 
             stopSong();
             if(isFullscreen===true) fullscreen(songName);
@@ -188,6 +197,9 @@
             albumEl.classList.add("centerOfGP_grandchild");
             albumEl.parentElement.classList.add("centerOfGP_parent");
 
+            document.getElementById("fullscreenButton").classList.add("fancyButtonSecondary");
+            document.getElementById("fullscreenButton").classList.remove("fancyButton");
+
         } else if (isFullscreen === true) {
             //if (inFocus === true) clicked(imgId); //if enabled, stops playback and sets inFocus to false on fullscreen exit
 
@@ -196,11 +208,78 @@
             albumEl.classList.remove("inflate");
             albumEl.classList.remove("centerOfGP_grandchild");
             albumEl.parentElement.classList.remove("centerOfGP_parent");
+
+            document.getElementById("fullscreenButton").classList.remove("fancyButtonSecondary");
+            document.getElementById("fullscreenButton").classList.add("fancyButton");
         }
         console.log(": isFullscreen="+isFullscreen+"   inFocus="+inFocus);
     }
 
+    /* __________ < SHUFFLE PLAY > __________ */
 
+    var songs = ["Tatsuro Yamashita - Sparkle",
+        "Haruomi Hosono - Sports Men",
+        "Yasuha - Flyday Chinatown",
+        "Kikuchi Momoko - Mystical Composer",
+        "Tatsuro Yamashita - Ride On Time",
+        "Tatsuro Yamashita - Magic Ways",
+        "Meiko Nakahara - Dance in the memories",
+        "Mariya Takeuchi - Plastic Love",
+        "Junko Yagami - Tasogare no Bay City (Twilight's Bay City)"
+    ];
+    function generateSong(){ return newSong = songs[Math.floor(Math.random()*9+1)]; }
+    var newSong;
+    var prevSongs = ["", "", ""];
+    var isShuffle = false;
+
+    function startShuffle(){
+        if(isShuffle===false){
+            isShuffle = true;
+            newSong = generateSong();
+            console.log(newSong);
+            if(isAudioPlaying()===false){
+                inFocus = true;
+                clicked(newSong);
+                prevSongs[2] = prevSongs[1];
+                prevSongs[1] = prevSongs[0];
+                prevSongs[0] = newSong;
+            }
+            document.getElementById("skipButton").classList.remove("vanish");
+            document.getElementById("shuffleButton").innerHTML="disable shuffle play";
+            document.getElementById("shuffleButton").classList.add("fancyButtonSecondary");
+            document.getElementById("shuffleButton").classList.remove("fancyButton");
+        }else if(isShuffle===true){
+            isShuffle = false;
+            inFocus = false;
+
+            previousFocusEl.classList.add("deCirclify"); //legger deCirclify tilbake på elementet som ble clicked forrige gang.
+            previousFocusEl = document.querySelector("meta"); //dummy element
+            document.getElementById("skipButton").classList.add("vanish");
+            document.getElementById("shuffleButton").innerHTML="enable shuffle play";
+            document.getElementById("shuffleButton").classList.remove("fancyButtonSecondary");
+            document.getElementById("shuffleButton").classList.add("fancyButton");
+
+            stopSong();
+        }
+    }
+
+    echoAudio = true; //deleteme
+    function shuffleNewSong(){
+        if(isShuffle===true){
+//            console.log(" before: newSong="+newSong+"_prevSong"+prevSong+"_prevPrevSong="+prevPrevSong);
+            prevSongs[2] = prevSongs[1];
+            prevSongs[1] = prevSongs[0];
+            prevSongs[0] = newSong;
+            while(prevSongs.includes(newSong)){
+                newSong = generateSong();
+                console.log("generating new song")
+            }
+  //          console.log(" after: newSong="+newSong+"_prevSong"+prevSong+"_prevPrevSong="+prevPrevSong);
+            inFocus = true;
+            clicked(newSong);
+            if(isFullscreen){ fullscreen(prevSongs[0]); fullscreen(newSong); }
+        }
+    }
 
 </script>
 </body>
