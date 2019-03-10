@@ -117,31 +117,32 @@ function getObjectByKeyValue(array, key, value) {
 
 
 //_______________________________________ PLAY AUDIO _______________
+var echoAudio = false; //if echoAudio=true, reports audio events i konsoll
+
 var currentlyPlayingAudio = new Audio(); //global variabel for å kunne sette musikken på pause. Hindrer ikke simultane lyder, men lar deg bare påvirke den nyeste lyden som blir spilt.
 
 /** Method playAudio() plays sound file with given filepath, once.
  * @param filePath {String} - file path with source audio + file extension. */
 function playAudio(filePath) {
     currentlyPlayingAudio = new Audio(filePath);
-    currentlyPlayingAudio.play();
 
-    if(echoAudio===true) console.log("♪ playing");
+    currentlyPlayingAudio.play();
+    if(echoAudio===true) console.log("♪ started");
     endOfAudio = false;
     audioFallback(filePath);
-}
 
+}
 /** Method playAudioEz() plays sound file from the folder "Resources/audio" with given filepath, once.
  * @param file {String} - file/file path with source audio + file extension.
  * Time-saving method for when I need to play a lot of audio, and the audio is in the resources/audio folder. */
 function playAudioEz(file){
     currentlyPlayingAudio = new Audio("Resources/audio/"+file);
     currentlyPlayingAudio.play();
-    if(echoAudio===true) console.log("♪ playing");
+    if(echoAudio===true) console.log("♪ started");
     endOfAudio = false;
     audioFallback();
-}
 
-var echoAudio = false;
+}
 
 /** method stopAudio() pauses currentlyPlayingAudio and sets it's time to 0, meaning currentlyPlayingAudio will be played from the beginning if unpaused. */
 function stopAudio(){

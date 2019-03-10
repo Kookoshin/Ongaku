@@ -227,28 +227,34 @@
         "Junko Yagami - Tasogare no Bay City (Twilight's Bay City)"
     ];
     var newSong = "";
-    var prevSongs = ["","","","","","","",""];
+    var prevSongs = ["","","","","","","","",""];
+    var songsPlayed = 0; //how many times a new song has been played, used for resetting the prevSongs pool, to not create a repeating pattern of songs.
     var isShuffle = false;
 
     function generateSong(){ return songs[Math.floor(Math.random()*9)]; }
 
-    function storePrevSongs(newSong){       //stores previous & current songs, to prevent playing the same song again in a short amount of time.
+    function storePrevSongs(newSong) {       //stores previous & current songs, to prevent playing the same song again in a short amount of time.
         prevSongs[0] = newSong;
-        for(let i=prevSongs.length-1; i>0; i--){
-            prevSongs[i]=prevSongs[i-1];
-        } console.log("[prevSongs] = "+prevSongs)
+        for (let i = prevSongs.length - 1; i > 0; i--) {
+            prevSongs[i] = prevSongs[i - 1];
+        }
+        console.log("[prevSongs] ("+songsPlayed+") = " + prevSongs);
+
+        if(songsPlayed >= 9){
+            prevSongs = [newSong,"","","","","","","",""];
+            songsPlayed = 1; //1, not 0, as if it was 0, then the same song may play twice when prevSongs was reset.
+        } else songsPlayed++
     }
 
 
     function startShuffle(){
         if(isShuffle===false){
             isShuffle = true;
-            if(isFullscreen){ fullscreen(currentSong); fullscreen(newSong)}
+
             if(isAudioPlaying()===false){
                 inFocus = true;
                 storePrevSongs(newSong);
                 newSong = generateSong();
-
                 clicked(newSong);
             }
             document.getElementById("skipButton").classList.remove("vanish");
@@ -257,20 +263,16 @@
             document.getElementById("shuffleButton").classList.remove("fancyButton");
         }else if(isShuffle===true){
             isShuffle = false;
-            inFocus = false;
-
-            previousFocusEl.classList.add("deCirclify"); //legger deCirclify tilbake på elementet som ble clicked forrige gang.
-            previousFocusEl = document.querySelector("meta"); //dummy element
             document.getElementById("skipButton").classList.add("vanish");
             document.getElementById("shuffleButton").innerHTML="enable shuffle play";
             document.getElementById("shuffleButton").classList.remove("fancyButtonSecondary");
             document.getElementById("shuffleButton").classList.add("fancyButton");
 
-            stopSong();
+
         }
     }
 
-    //echoAudio = true; //deleteme
+    echoAudio = true; //deleteme
 
     function shuffleNewSong(){
 
@@ -286,11 +288,9 @@
             if(isFullscreen){ fullscreen(prevSongs[0]); fullscreen(newSong); }
 
             console.log(": "+prevSongs[0]+"   ->   "+newSong);
-            console.log("Now Playing "+newSong);
         }
         //coolDown("skipButton", 0.7);
     }
-    rel="prefetch"
 </script>
 </body>
 </html>
