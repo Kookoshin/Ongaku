@@ -102,7 +102,7 @@
     // TODO - make moduile out of dis
     // TODO - flytt adddeventlisteners greia til superb.js, med justerbar function & trigger if possible
 
-    // TODO IMPORTANT: GJØR OM ID'ENE TIL KUN SANGNAVN, OG LAG OBJEKTER FOR HVER ARTIST MED ARTISTNAVN OG SANGNAVN (EVT GJØR OM ID TIL KUN ARTISTNAVN, ELLER ET NUMMER & BRUK ET ARRAY MED OBJEKTER FOR Å SETTE INN RIKTIG BILDE OG SPILLE RIKTIG SANG VED Å REFERE TIL ARRAYEN. Slik at man kan bruke online uploads for det.
+    // TODO IMPORTANT: GJØR OM ID'ENE TIL KUN SANGNAVN, OG LAG OBJEKTER FOR HVER ARTIST MED ARTISTNAVN OG SANGNAVN (EVT GJØR OM ID TIL KUN ARTISTNAVN, ELLER ET NUMMER & BRUK ET ARRAY MED OBJEKTER FOR Å SETTE INN RIKTIG BILDE OG SPILLE RIKTIG SANG VED Å REFERE TIL ARRAYEN
 
 
     if(isChrome===true){
@@ -157,13 +157,14 @@
     var previousFocusEl = document.createElement("meta"); //cannot be undefined
 
     function clicked(songName) {
-        console.log(""); console.log("__clicked__   inFocus="+inFocus+"   previousFocusEl="+previousFocusEl);
+        console.log(""); console.log("___CLICKED___"); console.log(": inFocus="+inFocus+"  previousFocusEl="+previousFocusEl);
         let albumImgEl = document.getElementById(songName); //ID'en er songName
 
         if ( albumImgEl !== previousFocusEl ) {
             albumImgEl.classList.remove("deCirclify");                //fjerner deCirclify fra clicked elementet om det er et nytt element.
             previousFocusEl.classList.add("deCirclify");             //legger deCirclify tilbake på elementet som ble clicked forrige gang, om det er ett
             previousFocusEl = albumImgEl;                           //Preserves previously clicked album.
+
             if (inFocus === true){
                 stopAudio();
                 playAudioEz(songName + ".mp3");
@@ -174,21 +175,22 @@
 
 
             currentlyPlayingAudio.onended = function() {        //When the song ends, turns the album back into a circle & removes marquee:
-                console.log("End of audio reached.");
+                console.log(": End of audio reached.");
                 currentSong = "";
                 songInfoEl.classList.add("invisible");
                 previousFocusEl.classList.add("deCirclify");
                 previousFocusEl = document.querySelector("meta");     //dummy element
+                inFocus = false;
                 if(isFullscreen===true) fullscreen(songName);
         };
             inFocus = true;
-            console.log("inFocus enabled");
+            console.log(": inFocus enabled");
 
         } else if (albumImgEl === previousFocusEl) {
             inFocus = false;
             previousFocusEl.classList.add("deCirclify"); //legger deCirclify tilbake på elementet som ble clicked forrige gang.
             previousFocusEl = document.querySelector("meta"); //dummy element
-            console.log("inFocus disabled");
+            console.log(": inFocus disabled");
 
             stopSong();
             if(isFullscreen===true) fullscreen(songName);
@@ -208,32 +210,27 @@
     function fullscreen(imgId) {
         var albumEl = document.getElementById(imgId);
         albumEl.style.transitionDuration = "0.5s";
-        console.log("isFullscreen = "+isFullscreen+" & inFocus = "+inFocus);
 
         if (isFullscreen === false) {
             if (inFocus === false) clicked(imgId);
 
             isFullscreen = true;
-            console.log("inflating");
+            console.log(": inflating");
             albumEl.classList.add("inflate");
             albumEl.classList.add("centerOfGP_grandchild");
             albumEl.parentElement.classList.add("centerOfGP_parent");
 
         } else if (isFullscreen === true) {
-            if (inFocus === true) clicked(imgId);
+            //if (inFocus === true) clicked(imgId); //if enabled, stops playback and sets inFocus to false on fullscreen exit
 
             isFullscreen = false;
-            console.log("deflating");
+            console.log(": deflating");
             albumEl.classList.remove("inflate");
             albumEl.classList.remove("centerOfGP_grandchild");
             albumEl.parentElement.classList.remove("centerOfGP_parent");
         }
-        console.log("isFullscreen = "+isFullscreen+" & inFocus = "+inFocus);
+        console.log(": isFullscreen="+isFullscreen+"   inFocus="+inFocus);
     }
-
-
-
-    /* __________ < FAST FORWARD > __________ */
 
 
 

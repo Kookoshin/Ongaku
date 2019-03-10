@@ -146,13 +146,13 @@ var echoAudio = false;
 function stopAudio(){
     currentlyPlayingAudio.currentTime = 0;
     currentlyPlayingAudio.pause();
-    if(echoAudio===true) console.log("--audio STOP");
+    if(echoAudio===true) console.log("; --audio STOP");
 }
 
 /** method pauseAudio() pauses currentlyPlayingAudio without resetting time. */
 function pauseAudio(){
     currentlyPlayingAudio.pause();
-    if(echoAudio===true) console.log("-+audio paused");
+    if(echoAudio===true) console.log("; -+audio paused");
 }
 
 /** Method isAudioPlaying() returns "true" if currentlyPlayingAudio is not paused, false if it is. */
@@ -171,7 +171,7 @@ function audioFallback(){
 /** variable endOfAudio is set to true when currentlyPlayingAudio ends, and endOfAudioFunction is also triggered, to be used where needed. */
 var endOfAudio = false;
 currentlyPlayingAudio.onended = function(){
-    console.log("End of audio reached.");
+    console.log("; End of audio reached.");
     endOfAudio = true;
     audioEnded(currentlyPlayingAudio);
 };
@@ -179,9 +179,22 @@ currentlyPlayingAudio.onended = function(){
 /** method fastForward adds (seconds) amount of seconds to currentlyPlayingAudio's current time.
  * @param seconds (number) - the amount of seconds to skip forwards */
 function fastForward(seconds){
-    currentlyPlayingAudio.currentTime =+ seconds;
-}
+    let prevTime = currentTime();
 
+    currentlyPlayingAudio.currentTime += seconds;
+
+    console.log(prevTime+"  ->  +"+ seconds + "s  ->  "+currentTime());
+}
+function currentTime(){
+    let time = currentlyPlayingAudio.currentTime;
+    let minutes = Math.floor(time/60);
+    let seconds = Math.floor(time - minutes * 60); //.toString().slice(0,-7)
+
+    if(minutes.toString().length < 2)  minutes= "0"+minutes;
+    if(seconds.toString().length < 2)  seconds= "0"+seconds;
+
+    return minutes+"m"+seconds+"s"; //alt: return array with [minutes, seconds];
+}
 
 
 
