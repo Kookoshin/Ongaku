@@ -22,8 +22,6 @@
      <div class="plainDiv noMargin noPadding alignCenter justifyCenter column">
 
 
-
-
     <div id="chromeWarningDiv" class="error vanish" style="width: 500px">
         <p id="chromeWarning">It seems you're using Google Chrome, because of this, you must click anywhere on the page before attempting to play music, due to <a href="https://goo.gl/xX8pDD">Google Chrome's new autoplay-policy</a> </p>
     </div>
@@ -57,15 +55,10 @@
         </div>
     </div>
 
-    <div class="space"></div>
 
-    <div class="column plainDiv noPadding">
-        <div class="row justifyCenter">
-            <button class="fancyButtonOnPrimary" onclick="fastForward(30)">FAST FORWARD</button>
-            <button onclick="fullscreen(document.getElementById('inflateSongInput').value)" class="fancyButtonOnPrimary"> inflate </button>
-        </div>
-        <input type="text" id="inflateSongInput" placeholder="Artist - Song" style="min-width: 153px;" onkeypress="this.style.width = ((this.value.length + 1) * 8)+'px';">
-    </div>
+         <button class="fancyButton" onclick="fastForward(30)">fast forward</button>
+
+    <div class="space"></div>
 
 
     <!-- lag dropdown meny som automatisk legger til et nytt <select> med value = #id of <img> in #imgDiv -->

@@ -244,7 +244,7 @@ marquee {
 
 /*_________________ general _________________*/
 .newline{ margin: 0px !important; padding: 0px !important; display: relative; width: 95%; height: 0; background-color: transparent !important; border-style: none; !important; box-shadow: none !important; }   /* <br> fungerer ikke med FLEX, dette er et alternativ. */
-.space{ margin: 0px !important; padding: 0px !important; display: relative; width: 95%; height: 50px; background-color: transparent !important; border-style: none; !important; box-shadow: none !important; }
+.space{ margin: 0px !important; padding: 0px !important; display: relative; width: 95%; height: 25px; background-color: transparent !important; border-style: none; !important; box-shadow: none !important; }
 
 
 .minMargin { margin: 2px !important;}
