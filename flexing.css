@@ -155,7 +155,7 @@ div a{
     color:var(--primary) !important;
 }
 .error a{
-    color:var(--primary) !Important;
+    color:var(--primaryVariant) !Important;
 }
 
 img {
