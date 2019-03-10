@@ -203,7 +203,24 @@ function currentTime(){
     return minutes+"m"+seconds+"s"; //alt: return array with [minutes, seconds];
 }
 
-
+function loadAudio(file){
+    var audio = new Audio("Resources/audio/"+file+".mp3");
+    audio.addEventListener('canplaythrough', isAppLoaded, false);
+}
+var filesToPreload =
+    [   "Haruomi Hosono - Sports Men",
+        "Junko Yagami - Tasogare no Bay City (Twilight's Bay City)",
+        "Kikuchi Momoko - Mystical Composer",
+        "Mariya Takeuchi - Plastic Love",
+        "Meiko Nakahara - Dance in the memories",
+        "Tatsuro Yamashita - Magic Ways",
+        "Tatsuro Yamashita - Ride On Time",
+        "Tatsuro Yamashita - Sparkle",
+        "Yasuha - Flyday Chinatown"
+    ];
+for(let i=0; i<filesToPreload.length; i++){
+    loadAudio(filesToPreload[i]);
+}
 
 
 //_____________________________________________ GRAFMAKER _________________________________________
