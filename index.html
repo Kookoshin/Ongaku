@@ -1,0 +1,256 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 〠 </title>
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/interface-part-1/32/html-code-512.png">
+    <link rel="stylesheet" href="flexing.css">
+    <script src="superb.js"></script>
+
+
+    <style>
+
+    </style>
+</head>
+<body class="cursor_fancy">
+     <header>
+        <div class="plainDiv">
+            <div class="secondaryVariant justifyCenter minMarginChildren" style="width:400px; margin: 0;"> <h1> 音楽 </h1></div>
+        </div>
+    </header>
+     <div class="plainDiv noMargin noPadding alignCenter justifyCenter column">
+
+
+
+    <input type="text" style="margin-top: 40px;" placeholder="Ain't this cursor neat" class="pop">
+
+    <div style="height:220px; width:320px" class="widen primaryVariant noPadding stretch">
+    <marquee direction="down" behavior="alternate" height="225px" width="350px"><marquee behavior="alternate" direction="right"> <h1>DVD</h1> </marquee></marquee>
+    </div>
+
+    <div class="justifyCenter">
+        <p> &lt;br&gt; does not work properly &shy</p> <div class="newline"></div>  <h2>but oh well</h2>
+    </div>
+
+
+    <div style="height:100px; width:100px; background-color:red" class="plainDiv noShadow noPadding circlifyChildren justifyCenter">
+        <img src="Resources/img/An Insatiable High.jpg" class="noMargin">
+        <h2 style="position:absolute; color:black" class="whiteOutline" id="title7"> testing </h2>
+    </div>
+
+
+
+    <div id="chromeWarningDiv" class="error vanish" style="width: 500px">
+        <p id="chromeWarning">It seems you're using Google Chrome, because of this, you must click anywhere on the page before attempting to play music, due to <a href="https://goo.gl/xX8pDD">Google Chrome's new autoplay-policy</a> </p>
+    </div>
+
+    <div class="space"></div>
+
+    <div class="secondary">
+    <h3 class="textAlignCenter noMargin">〠 Hover over an album to listen to it, click it to enable permanent player, press F to zoom. 〠</h3>
+    </div>
+
+    <div class="space"></div>
+
+
+<marquee behavior="scroll" direction="left"  class="bold invisible noMargin blackOutline" style="position:initial; color: white; width: 600px; display:relative; font-size: 24px;" id="songInfo">  you shouldn't be seeing this  </marquee>
+
+    <div id="imgDiv" class="column noShadowChildren inline cursor_music centerOfGP_grandparent pop">
+        <div class="row plainDiv minMarginChildren noMargin noPadding">
+            <img id="Tatsuro Yamashita - Tsuite oide (Follow Me Along)" src="Resources/img/for you.jpg" style="width: 200px;" class="deCirclify">
+            <img id="Haruomi Hosono - Sports Men" src="Resources/img/philHarmony.jpg" style="width: 200px;" class="deCirclify">
+            <img id="Yasuha - Flyday Chinatown" src="Resources/img/flyday chinatown.jpg" style="width: 200px;" class="deCirclify">
+        </div>
+        <div class="row plainDiv minMarginChildren noMargin noPadding">
+            <img id="Kikuchi Momoko - Mystical Composer" src="Resources/img/Mystical Composer.jpg" style="width: 200px;" class="deCirclify">
+            <img id="Tatsuro Yamashita - Ride On Time" src="Resources/img/ride on time single.jpg" style="width: 200px;" class="deCirclify">
+            <img id="Tatsuro Yamashita - Magic Ways" src="Resources/img/big wave.jpg" style="width: 200px;" class="deCirclify">
+        </div>
+        <div class="row plainDiv minMarginChildren noMargin noPadding">
+            <img id="Meiko Nakahara - Dance in the memories" src="Resources/img/Mint.jpg" style="width: 200px;" class="deCirclify">
+            <img id="Mariya Takeuchi - Plastic Love" src="Resources/img/Sweetest Music.jpg" style="width: 200px;" class="deCirclify">
+            <img id="Junko Yagami - Tasogare no Bay City (Twilight's Bay City)" src="Resources/img/bay city.jpg" style="width: 200px;" class="deCirclify">
+        </div>
+    </div>
+
+    <div class="space"></div>
+
+    <div class="column plainDiv noPadding">
+        <div class="row justifyCenter">
+            <button class="fancyButtonOnPrimary" onclick="fastForward(30)">FAST FORWARD</button>
+            <button onclick="fullscreen(document.getElementById('inflateSongInput').value)" class="fancyButtonOnPrimary"> inflate </button>
+        </div>
+        <input type="text" id="inflateSongInput" placeholder="Artist - Song" style="min-width: 153px;" onkeypress="this.style.width = ((this.value.length + 1) * 8)+'px';">
+    </div>
+
+
+    <!-- lag dropdown meny som automatisk legger til et nytt <select> med value = #id of <img> in #imgDiv -->
+
+
+
+
+
+
+
+
+<br>
+</div>
+<script>
+    // TODO - Lag toggle mellom "bigscreen mode" & "normal mode". På Bigscreen mode: når et album trykkes på så fyller albumet det hele div'en, og floating audio controls pop up, eller som ene ikoner
+    // TODO CANDO - Lag en slik 3x3 square for hver artist, hvor man kan trykke på artisten sitt bilde & navn (over each others) & den vises, som en dropdown, eller bare som bytter ut. (showonhover)
+    // TODO - make moduile out of dis
+    // TODO - flytt adddeventlisteners greia til superb.js, med justerbar function & trigger if possible
+
+    // TODO IMPORTANT: GJØR OM ID'ENE TIL KUN SANGNAVN, OG LAG OBJEKTER FOR HVER ARTIST MED ARTISTNAVN OG SANGNAVN (EVT GJØR OM ID TIL KUN ARTISTNAVN, ELLER ET NUMMER & BRUK ET ARRAY MED OBJEKTER FOR Å SETTE INN RIKTIG BILDE OG SPILLE RIKTIG SANG VED Å REFERE TIL ARRAYEN
+
+
+    if(isChrome===true){
+        document.getElementById("chromeWarningDiv").classList.remove("vanish");
+        console.log("Google Chrome detected");
+    } // Google Chrome kan ikke spille unmuted lyd/video med mindre bruker har interactet med siden først, for å hindre at nettsider autoplayer media. (https://goo.gl/xX8pDD). Alternativt kan jeg tvinge interaction gjennom f.eks. login-screen, med det vil være encumbering for brukeren.
+    //Removes error message after first click
+    document.onclick = function(){ document.getElementById("chromeWarningDiv").classList.add("vanish"); } ;
+
+
+
+    var imgDivEl = document.getElementById("imgDiv");
+    imagesArray = imgDivEl.querySelectorAll("img"); //lager ett array med alle elementene "<img>" i "imgDiv".
+    imagesArray.forEach(addEventListeners); //kjører funksjonen "addEventListeners" på hver imagesArray element. Raskere enn å bruke for loop.
+    function addEventListeners(value, index, arr){ //value = elementet, in this case.
+        value.addEventListener("mouseover", function(){ playSong(value.id); /*console.log("++mouseover");*/} );
+        value.addEventListener("mouseout", function(){ stopSong(); /*console.log("--mouseout");*/} );
+        value.addEventListener("click", function(){ clicked(value.id) });
+        value.addEventListener("ondblclick", function(){ doubleClicked(value.id) });
+        //legger funksjonene i en "function(){<funksjonen min>}" wrapper for å ikke triggere den når siden lastes, med parameter.
+    }
+
+    var songInfoEl = document.getElementById("songInfo");
+    var currentSong = "";
+
+
+
+    /* __________ < HOVERING AN ALBUM > __________ */
+    function playSong(imgId){
+        if (inFocus===false){       //won't play music if focus is enabled
+            stopAudio();
+            playAudioEz(imgId + ".mp3");
+            currentSong = imgId;
+
+            songInfoEl.innerHTML = imgId;
+            songInfoEl.classList.remove("invisible");      //done so that a new line isn't added on the page when the marquee's innerHTML is initially defined, as with this, it's already defined, only transparent. Kan bruke zero-width characters, som &#8203;, men dette er mer readable.
+        }
+    }
+    function stopSong(){
+        if (inFocus===false){       //won't stop music if focus is enabled
+            stopAudio();
+            currentSong = "";
+
+            songInfoEl.classList.add("invisible");
+        }
+    }
+
+
+
+    /* __________ < CLICKING AN ALBUM > __________ */
+    var inFocus = false;
+    var previousFocusEl = document.createElement("meta"); //cannot be undefined
+
+    function clicked(songName) {
+        console.log(""); console.log("__clicked__   inFocus="+inFocus+"   previousFocusEl="+previousFocusEl);
+        let albumImgEl = document.getElementById(songName); //ID'en er songName
+
+        if ( albumImgEl !== previousFocusEl ) {
+            albumImgEl.classList.remove("deCirclify");                //fjerner deCirclify fra clicked elementet om det er et nytt element.
+            previousFocusEl.classList.add("deCirclify");             //legger deCirclify tilbake på elementet som ble clicked forrige gang, om det er ett
+            previousFocusEl = albumImgEl;                           //Preserves previously clicked album.
+            if (inFocus === true){
+                stopAudio();
+                playAudioEz(songName + ".mp3");
+                currentSong = songName;
+            }
+            songInfoEl.innerHTML = songName;
+            songInfoEl.classList.remove("invisible");
+
+
+            currentlyPlayingAudio.onended = function() {        //When the song ends, turns the album back into a circle & removes marquee:
+                console.log("End of audio reached.");
+                currentSong = "";
+                songInfoEl.classList.add("invisible");
+                previousFocusEl.classList.add("deCirclify");
+                previousFocusEl = document.querySelector("meta");     //dummy element
+                if(isFullscreen===true) fullscreen(songName);
+        };
+            inFocus = true;
+            console.log("inFocus enabled");
+
+        } else if (albumImgEl === previousFocusEl) {
+            inFocus = false;
+            previousFocusEl.classList.add("deCirclify"); //legger deCirclify tilbake på elementet som ble clicked forrige gang.
+            previousFocusEl = document.querySelector("meta"); //dummy element
+            console.log("inFocus disabled");
+
+            stopSong();
+            if(isFullscreen===true) fullscreen(songName);
+        }
+    }
+
+
+    /* __________ < FULLSCREEN > __________ */
+    echoKeys=false;
+    function keyPressedFunction(key){
+        if (key==="f"){
+            fullscreen(currentSong);
+        }
+    }
+
+    var isFullscreen = false;
+    function fullscreen(imgId) {
+        var albumEl = document.getElementById(imgId.toLowerCase());
+        albumEl.style.transitionDuration = "0.5s";
+        console.log("isFullscreen = "+isFullscreen+" & inFocus = "+inFocus);
+
+        if (isFullscreen === false) {
+            if (inFocus === false) clicked(imgId);
+
+            isFullscreen = true;
+            console.log("inflating");
+            albumEl.classList.add("inflate");
+            albumEl.classList.add("centerOfGP_grandchild");
+            albumEl.parentElement.classList.add("centerOfGP_parent");
+
+        } else if (isFullscreen === true) {
+            if (inFocus === true) clicked(imgId);
+
+            isFullscreen = false;
+            console.log("deflating");
+            albumEl.classList.remove("inflate");
+            albumEl.classList.remove("centerOfGP_grandchild");
+            albumEl.parentElement.classList.remove("centerOfGP_parent");
+        }
+        console.log("isFullscreen = "+isFullscreen+" & inFocus = "+inFocus);
+    }
+
+
+
+    /* __________ < FAST FORWARD > __________ */
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
