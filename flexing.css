@@ -102,9 +102,9 @@ header { /* for å centere items, ha contens i en div i header. Alt er !importan
       color: var(--onPrimary);
       margin: 10px auto; /*top&bunn=10px, left&right=auto*/
       font-weight: bold;
-  } header img {
+  }  header img {
         max-height:100% !important; /* for å ikke exceede parent element */
-    }
+      }
 
 
 div {
@@ -155,7 +155,7 @@ div a{
     color:var(--primary) !important;
 }
 .error a{
-    color:var(--primaryVariant) !Important;
+    color:var(--primary) !Important;
 }
 
 img {
@@ -194,7 +194,7 @@ button {
 }
 
 button, select{
-    cursor: url("Resources/etc/cursors/Mario_Gant/Normal_Select.cur"), hand !important;
+    cursor: url("Resources/etc/cursors/Mario_Gant/Normal_Select.cur"), pointer !important;
 }
 
 input, textArea{
